@@ -104,4 +104,5 @@ while date < datetime.date(endDate.year, endDate.month, endDate.day):
 
 
 
-
+##herokuへのデプロイ
+##参考：https://qiita.com/osakasho/items/527421ec483052055b34
