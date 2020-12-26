@@ -7,4 +7,4 @@ WEB_HOOK_URL = os.environ["SLACK_URL"]
 
 requests.post(WEB_HOOK_URL, data=json.dumps({
     "text" : "送信テスト",
-}))git
+}))
