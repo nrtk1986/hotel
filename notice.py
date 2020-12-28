@@ -6,5 +6,5 @@ import os
 WEB_HOOK_URL = os.environ["SLACK_URL"]
 
 requests.post(WEB_HOOK_URL, data=json.dumps({
-    "text" : "送信テスト2",
+    "text" : "送信テスト_1229",
 }))

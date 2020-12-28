@@ -3,7 +3,7 @@ import requests
 import re
 import datetime
 import pandas as pd
-
+import os
 
 ## 地名から緯度経度を返す関数 ##
 def geocoding(place):
@@ -22,7 +22,7 @@ def hotel_search(place, hotel_num, checkin, checkout, adult_num, child_num, inse
     latitude, longitude = geocoding(place)
 
     url = "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426"
-    params = {'applicationId': '1037158104789513926',
+    params = {'applicationId': os.environ["RAKTENTRAVEL_APP_ID"],
               'formatVersion': '2',
               'checkinDate': checkin,
               'checkoutDate': checkout,
@@ -74,8 +74,7 @@ def write_sql(df):
     import psycopg2
     from sqlalchemy import create_engine
 
-    engine = create_engine(
-        'postgres://yyvqlcafwczbnt:30914934b9ed83a11abad18b846b6613884dc71b34b70892db7513eeac7f3d2b@ec2-54-157-4-216.compute-1.amazonaws.com:5432/d6ac4b6kc5naqh')
+    engine = create_engine(os.environ["DATABASE_URL"])
     df.to_sql('ah_hos_karakusa_new', con=engine, if_exists='append', index=False)
 
 
